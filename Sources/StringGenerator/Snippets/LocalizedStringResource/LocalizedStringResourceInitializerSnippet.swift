@@ -42,18 +42,20 @@ extension LocalizedStringResourceInitializerSnippet: Snippet {
                     label: "table",
                     expression: MemberAccessExprSyntax(variableToken, stringsTable.tableProperty.name)
                 )
-                // bundle: .from(description: localizable.bundle)
                 LabeledExprSyntax(
                     label: "bundle",
-                    expression: FunctionCallExprSyntax(
-                        calledExpression: MemberAccessExprSyntax(name: "atURL"),
-                        leftParen: .leftParenToken(),
-                        rightParen: .rightParenToken()
-                    ) {
-                        LabeledExprSyntax(
-                            expression: MemberAccessExprSyntax(variableToken, stringsTable.bundleProperty.name, "bundleURL")
-                        )
-                    }
+                    expression: DeclReferenceExprSyntax(
+                        baseName: "myPackage"
+                    )
+//                    expression: FunctionCallExprSyntax(
+//                        calledExpression: MemberAccessExprSyntax(name: "atURL"),
+//                        leftParen: .leftParenToken(),
+//                        rightParen: .rightParenToken()
+//                    ) {
+//                        LabeledExprSyntax(
+//                            expression: MemberAccessExprSyntax(variableToken, stringsTable.bundleProperty.name, "bundleURL")
+//                        )
+//                    }
                 )
             }
             .multiline()
